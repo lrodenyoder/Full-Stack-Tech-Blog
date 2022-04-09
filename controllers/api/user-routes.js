@@ -45,4 +45,23 @@ router.post('/', (req, res) => {
         });
 });
 
+//LOGIN
+
+//update user
+router.put('/:id', (req, res) => {
+    User.update(req.body, {
+        where: { id: req.params.id }
+    })
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
+                res.status(404).json({ message: 'User not found' });
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 module.exports = router;
