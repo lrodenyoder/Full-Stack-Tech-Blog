@@ -3,4 +3,12 @@ const Post = require("./Post");
 // const Vote = require("./Vote");
 // const Comment = require("./Comment");
 
-module.exports = { User};
+User.hasMany(Post, {
+    foreignKey: "user_id",
+});
+
+Post.belongsTo(User, {
+    foreignKey: "user_id",
+});
+
+module.exports = { User, Post };
