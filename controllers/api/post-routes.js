@@ -47,10 +47,33 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
+        contents: req.body.contents,
         post_url: req.body.post_url,
         user_id: req.body.user_id,
     })
         .then((dbPostData) => res.json(dbPostData))
+        .catch((err) => {
+            console.error(err);
+            res.status(500).json(err);
+        });
+});
+
+router.put('/:id', (req, res) => {
+    Post.update(
+        {
+            title: req.body.title,
+            contents: req.body.contents,
+        },
+        {
+            where: { id: req.params.id },
+        })
+        .then((dbPostData) => {
+            if (!dbPostData) {
+                res.status(404).json({ message: "Post not found." });
+                return;
+            }
+            res.json(dbPostData);
+        })
         .catch((err) => {
             console.error(err);
             res.status(500).json(err);
@@ -63,7 +86,7 @@ router.delete('/:id', (req, res) => {
     })
         .then((dbPostData) => {
             if (!dbPostData) {
-                res.status(404).json({ message: "Post not found" });
+                res.status(404).json({ message: "Post not found." });
                 return;
             }
             res.json(dbPostData);
