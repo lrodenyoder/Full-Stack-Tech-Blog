@@ -26,7 +26,9 @@ router.get("/", (req, res) => {
   })
     .then((dbPostData) => {
       //sterilize object using .get() Sequelize method
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(dbPostData)
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+      console.log({posts}, "LOOK HERE")
       res.render("dashboard", { posts, loggedIn: true });
     })
     .catch((err) => {

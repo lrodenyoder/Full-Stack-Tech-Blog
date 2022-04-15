@@ -56,7 +56,6 @@ router.post('/', (req, res) => {
 });
 
 //user login (use POST to secure plaintext password) 
-//TODO: verify password with bcrypt
 router.post('/login', (req, res) => {
     User.findOne({
         where: { username: req.body.username }
@@ -68,12 +67,10 @@ router.post('/login', (req, res) => {
             }
             
             //verify user. compare plaintext password to hashed password
-
             const correctPW = dbUserData.checkPassword(req.body.password);
 
             if (!correctPW) {
                 res.status(400).json({ message: "Invalid password" });
-
                 return;
             }
 
@@ -85,7 +82,8 @@ router.post('/login', (req, res) => {
               req.session.username = dbUserData.username;
               req.session.loggedIn = true;
 
-              res.json({ user: dbUserData, message: "Successful login!" });
+                res.json({ user: dbUserData, message: "Successful login!" });
+                console.log(dbUserData)
             });
         });
 });
