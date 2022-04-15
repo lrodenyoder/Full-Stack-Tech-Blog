@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
       .then((dbPostData) => {
           //sterilize object using .get() Sequelize method
           const posts = dbPostData.map(post => post.get({ plain: true }));
-          res.render('homepage', { posts });
+          res.render('homepage', { posts, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.error(err);
