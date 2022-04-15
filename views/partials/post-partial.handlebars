@@ -1,13 +1,12 @@
     <a href="/post/{{id}}">
-    <article class="post">
-      <div class="title">
+    <article class="post card">
+      <div class="title card-header">
         <h1>{{title}}</h1>
+        <h2>Posted by {{user.username}} on
+        {{format_date created_at}}</h2>
       </div>
-      <div class="meta">
-        <div>{{user.user_id}}</div>
-        Written by {{user.username}} on
-        {{format_date created_at}}
-        |
+      <div class="meta card-body">
+        
         <div class="text">
       {{contents}}
     </div>

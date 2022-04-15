@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: var(--primary);
   margin: 0;
@@ -29,7 +33,7 @@ h5,
 h6 {
   font-weight: 700;
   margin: 0;
-  color: var(--dark);
+  color: var(--tertiary);
   line-height: 1.25;
 }
 
