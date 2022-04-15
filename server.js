@@ -4,9 +4,9 @@ const sequelize = require("./config/connection");
 const path = require("path");
 //enable handlebars
 const exphbs = require("express-handlebars");
-const hbs = exphbs.create({ });
-
-// const helpers = require("./utils/helpers");
+//enable helper methods
+const helpers = require("./utils/helpers");
+const hbs = exphbs.create({ helpers });
 
 //set up for using sessions
 const session = require("express-session");
