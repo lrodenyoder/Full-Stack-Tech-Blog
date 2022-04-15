@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const { Post, User } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 
 router.get("/", (req, res) => {
+    console.log(req.session)
     Post.findAll({
         order: [["created_at", "DESC"]],
         attributes: ["id", "title", "contents", "created_at"],
@@ -69,6 +70,7 @@ router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
         contents: req.body.contents,
+        //username: req.session.username,
         user_id: req.body.user_id,
     })
         .then((dbPostData) => res.json(dbPostData))
