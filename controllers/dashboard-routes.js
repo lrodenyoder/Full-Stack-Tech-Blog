@@ -2,8 +2,11 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
 
 router.get("/", (req, res) => {
-    console.log(req.session);
-  Post.findAll({
+  console.log(req.session);
+    Post.findAll({
+        where: { 
+          user_id: req.session.user_id
+      },
     order: [["created_at", "DESC"]],
     attributes: ["id", "title", "contents", "created_at"],
     include: [
@@ -21,19 +24,15 @@ router.get("/", (req, res) => {
       },
     ],
   })
-      .then((dbPostData) => {
-          //sterilize object using .get() Sequelize method
-          const posts = dbPostData.map(post => post.get({ plain: true }));
-          res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+    .then((dbPostData) => {
+      //sterilize object using .get() Sequelize method
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render("dashboard", { posts, loggedIn: true });
     })
     .catch((err) => {
       console.error(err);
       res.status(500).json(err);
     });
-});
-
-router.get("/login", (req, res) => {
-  res.render("login");
 });
 
 router.get("/post/:id", (req, res) => {
@@ -63,7 +62,7 @@ router.get("/post/:id", (req, res) => {
       // serialize the data
       const post = dbPostData.get({ plain: true });
 
-        //pass if the user is logged in
+      //pass if the user is logged in
       res.render("post", { post, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {

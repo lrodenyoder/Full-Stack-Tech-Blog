@@ -7,10 +7,10 @@ INSERT INTO user (username, password) VALUES ('user4', 'password');
 
 SELECT * FROM user;
 
-INSERT INTO post (title, contents, post_url, user_id, created_at) VALUES ('Test Post 1', 'lorem ipsum dolor sit amet, consectetur adipiscing', 'http://testurl1.com/', 1, CURDATE());
-INSERT INTO post (title, contents, post_url, user_id, created_at) VALUES ('Test Post 2', 'lorem ipsum dolor sit amet, consectetur adipiscing', 'http://testurl2.com/', 2, CURDATE());
-INSERT INTO post (title, contents, post_url, user_id, created_at) VALUES ('Test Post 3', 'lorem ipsum dolor sit amet, consectetur adipiscing', 'http://testurl3.com/', 3, CURDATE());
-INSERT INTO post (title, contents, post_url, user_id, created_at) VALUES ('Test Post 4', 'lorem ipsum dolor sit amet, consectetur adipiscing', 'http://testurl4.com/', 4, CURDATE());
+INSERT INTO post (title, contents, user_id, created_at) VALUES ('Test Post 1', 'lorem ipsum dolor sit amet, consectetur adipiscing', 1, CURDATE());
+INSERT INTO post (title, contents, user_id, created_at) VALUES ('Test Post 2', 'lorem ipsum dolor sit amet, consectetur adipiscing', 2, CURDATE());
+INSERT INTO post (title, contents, user_id, created_at) VALUES ('Test Post 3', 'lorem ipsum dolor sit amet, consectetur adipiscing', 3, CURDATE());
+INSERT INTO post (title, contents, user_id, created_at) VALUES ('Test Post 4', 'lorem ipsum dolor sit amet, consectetur adipiscing', 4, CURDATE());
 
 SELECT * FROM post;
 
