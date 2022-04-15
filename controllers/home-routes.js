@@ -64,7 +64,8 @@ router.get("/post/:id", (req, res) => {
       // serialize the data
       const post = dbPostData.get({ plain: true });
 
-      res.render("post", { post });
+        //pass if the user is logged in
+      res.render("post", { post, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.error(err);

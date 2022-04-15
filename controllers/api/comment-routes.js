@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  //check if the user is logged in before allowing a comment to be made
   if (req.session) {
     Comment.create({
         comment_text: req.body.comment_text,
@@ -23,7 +24,7 @@ router.post('/', (req, res) => {
             console.log(err);
             res.status(400).json(err);
         });
-  } else { console.log('not logged in')}
+  }
 });
 
 router.delete("/:id", (req, res) => {
