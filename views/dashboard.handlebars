@@ -1,30 +1,32 @@
-<section>
-  <h2>Create New Post</h2>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-    <textarea name="content-body"></textarea>
-  </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
-</section>
 
 {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
-  <ol>
+  <ol class="list-group">
     {{#each posts as |post|}}
     <li>
-      {{> post-partial post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+      {{> dash-post-partial post}}
     </li>
     {{/each}}
   </ol>
 </section>
 {{/if}}
+
+<section class="card">
+  <h2 class="card-header">Create New Post</h2>
+
+  <form class="new-post-form card-body">
+    <div >
+      <label for="post-title" class="form-label">Title</label>
+      <input type="text" id="post-title" name="post-title" class="form-input" />
+    </div>
+    <div>
+      <label for="content-body" class="form-label">Content</label>
+    <textarea name="content-body" placeholder="250 character max" class="form-input"></textarea>
+  </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
 
 <script src="/js/add-post.js"></script>
