@@ -15,6 +15,11 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  text-decoration: none;
+  color: var(--tertiary)
+}
+
 body {
   background-color: var(--primary);
   margin: 0;
@@ -46,6 +51,10 @@ p {
   font-size: 1.2rem;
 }
 
+.nav {
+  flex-wrap: nowrap;
+}
+
  .btn {
   font-size: 1.3rem;
   text-decoration:none;
@@ -60,6 +69,16 @@ p {
   background-color: var(--light-dark);
   box-shadow: 3px 3px var(--dark);
   transform: translate(-1px, -1px);
+}
+
+a.btn {
+  width: 35%;
+  margin: 0.5rem 1rem;
+}
+
+.btn#logout {
+  width: 35%;
+  margin: 0.5rem 1rem;
 }
 
  .btn:hover {
@@ -114,6 +133,7 @@ p {
   display: inline-block;
   border-radius: var(--border-radius);
   box-shadow: 6px 5px var(--light-dark);
+  margin: 0.5rem 1rem;
 }
 
 .list-group {
@@ -130,8 +150,13 @@ p {
   text-decoration: none;
 }
 
+.list-group-item{
+  background-color: var(--primary);
+  border: none;
+}
+
 .list-item:hover {
-  background-color: var(--dark);
+  background-color: var(--primary);
 }
 
 .status-icon {
